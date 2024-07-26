@@ -60,3 +60,6 @@ public class Main {
         while (input != 0);
     }
 }
+
+/*Ho deciso di mettere i setter privati in modo tale che l'unica possibilità di modificare brightness e volume sia quella
+ * di utilizzare i vari metodi Up e Down*/

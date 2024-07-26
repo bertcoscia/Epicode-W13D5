@@ -54,7 +54,7 @@ public class Audio extends MultimediaElement implements Playble {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    private void setVolume(int volume) {
         if (volume >= 0 && volume <= 10) {
             this.volume = volume;
         }
@@ -64,7 +64,7 @@ public class Audio extends MultimediaElement implements Playble {
         return length;
     }
 
-    public void setLength(int length) {
+    private void setLength(int length) {
         if (length > 0) {
             this.length = length;
         } else {
