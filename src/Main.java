@@ -15,29 +15,30 @@ public class Main {
 
         for (int i = 0; i < 5; i++) {
             System.out.println("Type what kind of multimedia element you want to create: audio, video, picture");
-            String chosenMedia = scanner.nextLine();
-            System.out.println("Type the name of your file");
-            String name = scanner.nextLine();
-            switch (chosenMedia) {
-                case "audio":
-                    System.out.println("Type the length of your audio file, it must be a number greater than 0");
-                    int lengthAudio = Integer.parseInt(scanner.nextLine());
-                    Audio audio = new Audio(name, lengthAudio);
-                    arr[i] = audio;
-                    break;
-                case "video":
-                    System.out.println("Type the length of your video file, it must be a number greater than 0");
-                    int lengthVideo = Integer.parseInt(scanner.nextLine());
-                    Video video = new Video(name, lengthVideo);
-                    arr[i] = video;
-                    break;
-                case "picture":
-                    Picture picture = new Picture(name);
-                    arr[i] = picture;
-                    break;
-                default:
-                    System.out.println("You must chose one between audio, video, picture");
-                    break;
+            String chosenMedia = scanner.nextLine().toLowerCase();
+            if (!chosenMedia.equals("audio") && !chosenMedia.equals("video") && !chosenMedia.equals("picture")) {
+                System.out.println("You must chose one between audio, video, picture");
+            } else {
+                System.out.println("Type the name of your file");
+                String name = scanner.nextLine();
+                switch (chosenMedia) {
+                    case "audio":
+                        System.out.println("Type the length of your audio file, it must be a number greater than 0");
+                        int lengthAudio = Integer.parseInt(scanner.nextLine());
+                        Audio audio = new Audio(name, lengthAudio);
+                        arr[i] = audio;
+                        break;
+                    case "video":
+                        System.out.println("Type the length of your video file, it must be a number greater than 0");
+                        int lengthVideo = Integer.parseInt(scanner.nextLine());
+                        Video video = new Video(name, lengthVideo);
+                        arr[i] = video;
+                        break;
+                    case "picture":
+                        Picture picture = new Picture(name);
+                        arr[i] = picture;
+                        break;
+                }
             }
             System.out.println(Arrays.toString(arr));
         }
