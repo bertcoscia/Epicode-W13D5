@@ -18,6 +18,7 @@ public class Main {
             String chosenMedia = scanner.nextLine().toLowerCase();
             if (!chosenMedia.equals("audio") && !chosenMedia.equals("video") && !chosenMedia.equals("picture")) {
                 System.out.println("You must chose one between audio, video, picture");
+                i--; // se l'utente scrive qualcosa che non sia uno dei tre tipi decremento i in modo tale che non si salti un giro nella costruzione dell'array
             } else {
                 System.out.println("Type the name of your file");
                 String name = scanner.nextLine();
