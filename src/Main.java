@@ -1,4 +1,5 @@
 import entities.Audio;
+import entities.Video;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,6 +9,8 @@ public class Main {
         System.out.println(audio1);
         audio1.volumeUp();
         System.out.println(audio1);*/
-        audio1.play();
+        Video video1 = new Video("Hello", 5);
+        System.out.println(video1);
+        video1.play();
     }
 }

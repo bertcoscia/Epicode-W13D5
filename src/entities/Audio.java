@@ -1,13 +1,15 @@
 package entities;
 
-public class Audio extends MultimediaElement {
-    private int volume;
-    private int duration;
+import interfaces.Playble;
 
-    public Audio(String name, int duration) {
+public class Audio extends MultimediaElement implements Playble {
+    private int volume;
+    private int length;
+
+    public Audio(String name, int length) {
         super(name);
         this.volume = 5;
-        this.setDuration(duration);
+        this.setLength(length);
     }
 
     public void volumeDown() {
@@ -15,7 +17,7 @@ public class Audio extends MultimediaElement {
         if (currentVolume > 0) {
             this.setVolume(currentVolume - 1);
         } else {
-            throw new IllegalArgumentException("Volume is already 0");
+            throw new IllegalArgumentException("Volume is already at minimum value");
         }
     }
 
@@ -24,7 +26,7 @@ public class Audio extends MultimediaElement {
         if (currentVolume < 10) {
             this.setVolume(currentVolume + 1);
         } else {
-            throw new IllegalArgumentException("Volume is already 10");
+            throw new IllegalArgumentException("Volume is already at maximum value");
         }
     }
 
@@ -36,11 +38,12 @@ public class Audio extends MultimediaElement {
         return exclamations;
     }
 
+    @Override
     public void play() {
         String exclamations = countVolume();
-        for (int i = 0; i < this.duration; i++) {
+        for (int i = 0; i < this.length; i++) {
             String result;
-            result = this.name + exclamations;
+            result = this.name + " " + exclamations;
             System.out.println(result);
         }
     }
@@ -57,13 +60,13 @@ public class Audio extends MultimediaElement {
         }
     }
 
-    public int getDuration() {
-        return duration;
+    public int getLength() {
+        return length;
     }
 
-    public void setDuration(int duration) {
-        if (duration > 0) {
-            this.duration = duration;
+    public void setLength(int length) {
+        if (length > 0) {
+            this.length = length;
         } else {
             throw new IllegalArgumentException("Choose a value bigger than 0");
         }
@@ -73,7 +76,7 @@ public class Audio extends MultimediaElement {
     public String toString() {
         return "Audio " + name + " {" +
                 "volume=" + volume +
-                ", duration=" + duration +
+                ", length=" + length +
                 ", name='" + name + '\'' +
                 '}';
     }
