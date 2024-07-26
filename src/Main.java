@@ -13,7 +13,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         MultimediaElement[] arr = new MultimediaElement[5];
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < arr.length; i++) {
             System.out.println("Type what kind of multimedia element you want to create: audio, video, picture");
             String chosenMedia = scanner.nextLine().toLowerCase();
             if (!chosenMedia.equals("audio") && !chosenMedia.equals("video") && !chosenMedia.equals("picture")) {
