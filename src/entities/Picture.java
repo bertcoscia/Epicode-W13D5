@@ -45,4 +45,18 @@ public class Picture extends MultimediaElement implements HasBrightness {
                 ", name='" + name + '\'' +
                 '}';
     }
+
+    private String countBrightness() {
+        String stars = "";
+        for (int i = 0; i < this.brightness; i++) {
+            stars = stars + "*";
+        }
+        return stars;
+    }
+
+    public void show() {
+        String stars = countBrightness();
+        String result = this.name + " " + stars;
+        System.out.println(result);
+    }
 }

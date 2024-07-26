@@ -1,12 +1,62 @@
 import entities.Audio;
+import entities.MultimediaElement;
 import entities.Picture;
 import entities.Video;
+import interfaces.Playble;
+
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Audio audio1 = new Audio("Never gonna give you up", 3);
-        Video video1 = new Video("Hello", 5);
-        Picture pic1 = new Picture("pic1");
-        
+
+        Scanner scanner = new Scanner(System.in);
+        MultimediaElement[] arr = new MultimediaElement[5];
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Type what kind of multimedia element you want to create: audio, video, picture");
+            String chosenMedia = scanner.nextLine();
+            System.out.println("Type the name of your file");
+            String name = scanner.nextLine();
+            switch (chosenMedia) {
+                case "audio":
+                    System.out.println("Type the length of your audio file, it must be a number greater than 0");
+                    int lengthAudio = Integer.parseInt(scanner.nextLine());
+                    Audio audio = new Audio(name, lengthAudio);
+                    arr[i] = audio;
+                    break;
+                case "video":
+                    System.out.println("Type the length of your video file, it must be a number greater than 0");
+                    int lengthVideo = Integer.parseInt(scanner.nextLine());
+                    Video video = new Video(name, lengthVideo);
+                    arr[i] = video;
+                    break;
+                case "picture":
+                    Picture picture = new Picture(name);
+                    arr[i] = picture;
+                    break;
+                default:
+                    System.out.println("You must chose one between audio, video, picture");
+                    break;
+            }
+            System.out.println(Arrays.toString(arr));
+        }
+
+        int input;
+        do {
+            System.out.println("Which element do you want to run? 1, 2, 3, 4, 5? Enter 0 to exit");
+            input = Integer.parseInt(scanner.nextLine());
+            if (input >= 1 && input <= 5) {
+                MultimediaElement chosenElement = arr[input - 1];
+                if (chosenElement instanceof Audio || chosenElement instanceof Video) {
+                    ((Playble) chosenElement).play();
+                } else {
+                    ((Picture) chosenElement).show();
+                }
+            } else if (input != 0) {
+                System.out.println("Choice not valid. Insert a number between 1, 2, 3, 4, 5. Enter 0 to exit");
+            }
+        }
+        while (input != 0);
     }
 }
