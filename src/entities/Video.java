@@ -1,8 +1,9 @@
 package entities;
 
+import interfaces.HasBrightness;
 import interfaces.Playble;
 
-public class Video extends MultimediaElement implements Playble {
+public class Video extends MultimediaElement implements Playble, HasBrightness {
     private int volume;
     private int length;
     private int brightness;
@@ -21,8 +22,6 @@ public class Video extends MultimediaElement implements Playble {
     private void setVolume(int volume) {
         if (volume >= 0 && volume <= 10) {
             this.volume = volume;
-        } else {
-            throw new IllegalArgumentException("Choose a value between 0 and 10");
         }
     }
 
@@ -45,11 +44,10 @@ public class Video extends MultimediaElement implements Playble {
     private void setBrightness(int brightness) {
         if (brightness > 0) {
             this.brightness = brightness;
-        } else {
-            throw new IllegalArgumentException("Choose a value bigger than 0");
         }
     }
 
+    @Override
     public void volumeDown() {
         int currentVolume = this.getVolume();
         if (currentVolume > 0) {
@@ -59,6 +57,7 @@ public class Video extends MultimediaElement implements Playble {
         }
     }
 
+    @Override
     public void volumeUp() {
         int currentVolume = this.getVolume();
         if (currentVolume < 10) {
@@ -68,6 +67,7 @@ public class Video extends MultimediaElement implements Playble {
         }
     }
 
+    @Override
     public void brightnessDown() {
         int currentBrightness = this.getBrightness();
         if (currentBrightness > 0) {
@@ -77,6 +77,7 @@ public class Video extends MultimediaElement implements Playble {
         }
     }
 
+    @Override
     public void brightnessUp() {
         int currentBrightness = this.getBrightness();
         if (currentBrightness < 10) {

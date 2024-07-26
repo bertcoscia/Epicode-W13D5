@@ -12,6 +12,7 @@ public class Audio extends MultimediaElement implements Playble {
         this.setLength(length);
     }
 
+    @Override
     public void volumeDown() {
         int currentVolume = this.getVolume();
         if (currentVolume > 0) {
@@ -21,6 +22,7 @@ public class Audio extends MultimediaElement implements Playble {
         }
     }
 
+    @Override
     public void volumeUp() {
         int currentVolume = this.getVolume();
         if (currentVolume < 10) {
@@ -55,8 +57,6 @@ public class Audio extends MultimediaElement implements Playble {
     public void setVolume(int volume) {
         if (volume >= 0 && volume <= 10) {
             this.volume = volume;
-        } else {
-            throw new IllegalArgumentException("Choose a value between 0 and 10");
         }
     }
 
